@@ -1,4 +1,4 @@
-@extends('user.layout')
+@extends('layouts.app')
 
 @section('title', 'delivery')
 
@@ -9,50 +9,32 @@
 	<div class="container">
 
 		<div class="row">
-			<div class="col-sm-12">
-				<ul>
-					@extends('user.partials.nav')
-				</ul>
-			</div>
-
-			
-
-			<!-- div lateral Categorias -->
-			<div class="col-sm-8">
-
-				
-
-				<ul class="list-group">
-					<li class="list-group-item"><h5><strong>Historias Para Completar</strong></h5></li>
-					@foreach ($stories as $story)
-
-						<li class="list-group-item">
-
-							<p>{{$story->title}}
-							<a href="#" class="pull-right">Leer</a></p>
-							<p class="pull-right"> votos: {{ $story->votes}}</p><br>
-						</li>
-
-					@endforeach 
-
-					<li class="list-group-item">
-						{{ $stories->render() }}
-					</li>
-				</ul>
-					
-					
-			</div>	
-
-			
 			<div class="col-sm-4">
+			
+			<div class="table table-striped">
+				<thead>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Points</th>
+					<th>Type</th>
+					<th>Options</th>
+				</thead>
+				<tbody>
+					<tr>
+						@foreach ($users as $user)
+							<td>{{ $user->id }}</td>
+							<td>{{ $user->name }}</td>
+							<td>{{ $user->email }}</td>
+							<td>{{ $user->points }}</td>
+							<td>{{ $user->type }}</td>
+							<td>
 
-				<div class="panel panel-default">
-					<div class="panel-heading">Actualmente:</div>
-					<div class="panel-body"><p>Usuarios Registrados: {!! $totalUsers !!}</p></div>
-					<div class="panel-body"><p>Historias Registradas: {!! $totalStories !!}</p></div>
-				</div>
-				
-				
+							<td>
+						@endforeach
+					</tr>					
+				</tbody>
+			</div>			
 	
 			</div>
 

@@ -17,14 +17,23 @@ class CreateStoriesTable extends Migration
 
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
             $table->string('title');
+            $table->string('slug');
             $table->bigInteger('votes');
             $table->enum('status', ['PUBLISHED','DRAFT'])->default('DRAFT');
             $table->timestamps();
 
             $table->foreign('user_id')
-                      ->references('id')->on('users')
-                      ->onDelete('cascade');
+                        ->references('id')->on('users')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
+
+            $table->foreign('tag_id')
+                        ->references('id')->on('tags')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
+
         });
     }
 

@@ -4,9 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
-class UserAdminController extends Controller
+class TagAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id')->paginate();
-
-        return view('admin.user.index', compact('users'));
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        //
     }
 
     /**
@@ -38,7 +35,7 @@ class UserAdminController extends Controller
      */
     public function store(Request $request)
     {
-        return "guardado";
+        //
     }
 
     /**
@@ -49,8 +46,7 @@ class UserAdminController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.user.show', compact('user'));
+        //
     }
 
     /**
@@ -84,9 +80,6 @@ class UserAdminController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-
-        return back();
+        //
     }
 }

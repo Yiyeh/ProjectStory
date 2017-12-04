@@ -12,6 +12,12 @@ class StoryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Story::class, 60) ->create();
+        factory(App\Story::class, 60)->create()->each(function(App\Story $story){
+			$story->tags()->attach([
+				rand(1,2),
+				rand(3,4),
+				5,
+			]);        	
+        });
     }
 }

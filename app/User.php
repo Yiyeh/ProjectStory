@@ -28,10 +28,10 @@ class User extends Authenticatable
     ];
 
     public function stories(){
-        $this->hasMany(Story::class);
+        return $this->hasMany(Story::class);
     }
 
     public function segments(){
-        $this->hasMany(Segment::class);
+        return $this->hasMany(Segment::class);
     }
 }
