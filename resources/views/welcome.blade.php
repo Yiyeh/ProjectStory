@@ -79,15 +79,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Sigue la Historia
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/stories/">Ver Historias</a>
+                    <a href="#">Noticias</a>
+                    <a href="#">¿Qué es esto?</a>
+                    <a href="#">Contacto</a>
                 </div>
             </div>
         </div>

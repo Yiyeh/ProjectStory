@@ -20,7 +20,7 @@ class CreateSegmentsTable extends Migration
             $table->integer('story_id')->unsigned();
             $table->string('body', 9999);
             $table->bigInteger('votes');
-            $table->enum('status', ['PUBLISHED','DRAFT'])->default('DRAFT');
+            $table->enum('status', ['PUBLISHED','DRAFT','DISCARTED'])->default('DRAFT');
             $table->timestamps();
 
             $table->foreign('user_id')

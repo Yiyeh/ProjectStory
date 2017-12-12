@@ -9,6 +9,7 @@ $factory->define(App\Story::class, function (Faker $faker) {
     	'tag_id' 	=> rand(1,5),
     	'title'		=> $title,
     	'slug'		=> str_slug($title),
+    	'intro'		=> $faker->sentence(100),
     	'votes'		=> rand(1,1000),
     	'status'	=> $faker->randomElement(['PUBLISHED','DRAFT'])
     ];

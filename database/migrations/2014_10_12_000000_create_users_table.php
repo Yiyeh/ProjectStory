@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('points')->default(0);
-            $table->enum('type', ['MEMBER','BANNED','EDITOR','MODERADOR','ADMIN'])->default('MEMBER');
+            $table->enum('type', ['MEMBER','BANNED','EDITOR','MODERATOR','ADMIN'])->default('MEMBER');
             $table->rememberToken();
             $table->timestamps();
         });

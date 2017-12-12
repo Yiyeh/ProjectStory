@@ -5,10 +5,10 @@
 	
 	<div class="container">
 
-		<h1 class="page-header">New User</h1>
+		<h1 class="page-header">Editing User {{$user->name}}</h1>
 		<a href="{{ route('users.index') }}" class="btn btn-default pull-right">List</a>	
 	
-		{!! Form::open(['route' => 'users.store']) !!}
+		{!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
 			
 			<div class="form-group">
 				{!! Form::label('name','Nombre') !!}
@@ -18,11 +18,6 @@
 			<div class="form-group">
 				{!! Form::label('email','Correo Electronico') !!}
 				{!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'example@email.com']) !!}
-			</div>
-
-			<div class="form-group">
-				{!! Form::label('password','Contraseña') !!}
-				{!! Form::password('password', ['class' => 'form-control', 'placeholder' => '********']) !!}
 			</div>
 
 			<div class="form-group">

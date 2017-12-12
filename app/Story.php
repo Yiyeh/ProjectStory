@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Story extends Model
 {
     protected $fillable = [
-    		'user_id','tag_id', 'title', 'votes'
+    		'user_id','tag_id', 'title', 'intro', 'votes'
     ];
 
     public function user(){

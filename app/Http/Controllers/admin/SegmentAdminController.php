@@ -4,6 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Laracast\Flash\Flash;
+use App\Segment;
+use App\Story;
 
 class SegmentAdminController extends Controller
 {
@@ -14,7 +17,8 @@ class SegmentAdminController extends Controller
      */
     public function index()
     {
-        //
+        $segments = Segment::orderBy('id','DESC')->paginate();
+        return view('admin.segment.index',compact('segments'));
     }
 
     /**
@@ -24,7 +28,15 @@ class SegmentAdminController extends Controller
      */
     public function create()
     {
-        //
+        $segment = new Segment;
+        $segment->user_id   = \Auth::user()->id;
+        $segment->story_id  = $request->story_id;
+        $segment->body      = $request->body;
+        $segment->votes     = $request->votes;
+        $segment->status    = $request->status;
+
+        flash('Se ha creado el segmento')->success();
+        return redirect()->route('segment.index');
     }
 
     /**
@@ -35,7 +47,8 @@ class SegmentAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $stories = Story::get();
+        return view('admin.segment.create',compact('stories'));
     }
 
     /**
@@ -46,7 +59,8 @@ class SegmentAdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $segment = Segment::findOrFail($id);
+        return view('admin.segment.show',compact('id'));
     }
 
     /**
@@ -57,7 +71,9 @@ class SegmentAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stories = Story::get();
+        $segment = Segment::findOrFail($id);
+        return view('admin.segment.edit',compact('id','stories'));
     }
 
     /**
@@ -69,7 +85,12 @@ class SegmentAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $segment = Segment::findOrFail($id);
+        $segment->fill($request->all());
+        $segment->save();
+
+        flash('El segmento se ha modificado.')->warning();
+        return redirect()->route('segment.index');
     }
 
     /**
@@ -80,6 +101,10 @@ class SegmentAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $segment = Segment::findOrFail($id);
+        $segment->delete();
+
+        flash('El segmento se ha eliminado.')->warning();
+        return redirect()->route('segment.index');
     }
 }

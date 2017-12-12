@@ -20,6 +20,7 @@ class CreateStoriesTable extends Migration
             $table->integer('tag_id')->unsigned();
             $table->string('title');
             $table->string('slug');
+            $table->string('intro', 9999);
             $table->bigInteger('votes');
             $table->enum('status', ['PUBLISHED','DRAFT'])->default('DRAFT');
             $table->timestamps();

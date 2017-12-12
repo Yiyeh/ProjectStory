@@ -19,8 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('story', 'user\StoryController');
+Route::resource('stories', 'user\StoryController');
 
 Route::prefix('admin')->group(function(){
 	Route::resource('users', 'admin\UserAdminController');
+	Route::resource('stories', 'admin\StoryAdminController');
+	Route::resource('segments', 'admin\SegmentAdminController');
 });

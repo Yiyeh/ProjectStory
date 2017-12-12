@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Laracast\Flash\Flash;
 use App\User;
 
 class UserAdminController extends Controller
@@ -38,7 +39,19 @@ class UserAdminController extends Controller
      */
     public function store(Request $request)
     {
-        return "guardado";
+        $user = new User;
+        $user->name     = $request->name;
+        $user->email    = $request->email;
+        $user->password  = bcrypt($request->password);
+        $user->type     = $request->type;
+
+        $user->save();
+
+        flash('El Usuario se ha creado.')->success();
+
+        return redirect()->route('users.index');
+
+
     }
 
     /**
@@ -61,7 +74,8 @@ class UserAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
@@ -73,7 +87,15 @@ class UserAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->fill($request->all());
+        $user->points = $request->points;
+        $user->type = $request->type;
+        $user->save();
+
+        flash('El Usuario se ha modificado.')->warning();
+        return redirect()->route('users.index');
+
     }
 
     /**
@@ -87,6 +109,7 @@ class UserAdminController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return back();
+        flash('El Usuario se ha eliminado.')->warning();
+        return redirect()->route('users.index');
     }
 }

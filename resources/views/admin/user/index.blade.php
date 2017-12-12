@@ -11,6 +11,8 @@
 
 				<h1 class="page-header"> User List </h1>
 
+				@include('flash::message')
+
 				<a href="{{ route('users.create') }}" class="btn btn-default pull-right">New User</a>
 			
 				<table class="table table-striped">
@@ -20,7 +22,7 @@
 						<th>Email</th>
 						<th>Points</th>
 						<th>Type</th>
-						<th>Options</th>
+						<th colspan="3">Options</th>
 					</thead>
 					<tbody>
 						@foreach ($users as $user)
@@ -31,9 +33,17 @@
 							<td>{{ $user->points }}</td>
 							<td>{{ $user->type }}</td>
 							<td>
-								<a href="{{ route('users.show', $user->id) }}" class="link">View</a>
-								<a href="{{ route('users.edit', $user->id) }}" class="link">Edit</a>
-								<a href="#" class="link">Delete</a>
+								<a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-primary">View</a>
+							</td>
+							<td>	
+								<a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
+							</td>
+							<td>	
+								<form action="{{ route('users.destroy', $user->id) }}" method="POST">
+									{{csrf_field()}}
+									<input type="hidden" name="_method" value="DELETE">
+									<button class="btn btn-sm btn-danger">Delete</button>
+								</form>
 							<td>			
 						</tr>
 						@endforeach					
