@@ -15,10 +15,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="nav-item ">
-          <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{url('/')}}">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/delivery">Historias</a>
+          <a class="nav-link" href="{{route('index')}}">Historias</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/noticias">Noticias</a>

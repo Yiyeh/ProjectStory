@@ -19,9 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('stories', 'user\StoryController');
+Route::get('/inicio', 'PageController@index')->name('index');
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function(){
 	Route::resource('users', 'admin\UserAdminController');
 	Route::resource('stories', 'admin\StoryAdminController');
 	Route::resource('segments', 'admin\SegmentAdminController');

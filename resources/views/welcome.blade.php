@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/stories/">Ver Historias</a>
+                    <a href="{{route('index')}}">Ver Historias</a>
                     <a href="#">Noticias</a>
                     <a href="#">¿Qué es esto?</a>
                     <a href="#">Contacto</a>

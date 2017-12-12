@@ -166,6 +166,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Radic\BladeExtensions\BladeExtensionsServiceProvider::class,
 
         /*
          * Package Service Providers...
